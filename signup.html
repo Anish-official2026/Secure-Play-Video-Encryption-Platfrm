@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='secure-3.ico') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #00bcd4, #e0f7fa);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: backgroundAnimation 10s ease infinite;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(135deg, #00bcd4, #e0f7fa); }
+            50% { background: linear-gradient(135deg, #009688, #b2dfdb); }
+            100% { background: linear-gradient(135deg, #00bcd4, #e0f7fa); }
+        }
+
+        .header {
+            background-color: #263238;
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .signup-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 360px;
+            margin-top: 20px;
+            transform: translateY(50px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .signup-container h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .signup-container h2:hover {
+            color: #00bcd4;
+        }
+
+        .signup-container label {
+            font-size: 14px;
+            color: #777;
+            display: block;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .signup-container input[type="text"],
+        .signup-container input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .signup-container input[type="text"]:focus,
+        .signup-container input[type="password"]:focus {
+            border-color: #00bcd4;
+        }
+
+        .signup-container button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #009688;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .signup-container button:hover {
+            background: #00796b;
+        }
+
+        .signup-container p {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .signup-container a {
+            color: #00bcd4;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .signup-container a:hover {
+            color: #263238;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        SECURE PLAY 
+    </div>
+    <div class="signup-container">
+        <h2>Create Your Account</h2>
+        <form action="/signup" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="/login">Login</a></p>
+    </div>
+</body>
+</html>

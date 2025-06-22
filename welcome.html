@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>Welcome</title>
+<head>
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='secure-3.ico') }}">
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Importing fonts from Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+    :root {
+      --primary-color: linear-gradient(45deg, darkslategray, black, lightseagreen); /* Dark teal, black, and light teal background */
+      --secondary-color: white;
+      --navbar-bg: #ffffff; /* White navbar background */
+      --navbar-text-color: #000; /* Black color for navbar text */
+      --navbar-hover-bg: linear-gradient(45deg, darkslategray, black, lightseagreen); /* Gradient on hover */
+      --navbar-active-bg: lightseagreen; /* Active link background */
+    }
+
+    body {
+      background: var(--primary-color);
+      color: var(--navbar-text-color);
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: left;
+      flex-direction: column;
+    }
+
+    /* Layout for Top Right Buttons */
+    .top-buttons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .top-buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: white; /* White background initially */
+      color: black;
+      border: 2px solid white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    /* Hover Effect */
+    .top-buttons button:hover {
+      background: var(--primary-color); /* Gradient background on hover */
+      color: white;
+      border: 2px solid transparent;
+    }
+
+    /* Layout for Welcome Text and Buttons */
+    .content {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      max-width: 1200px; /* Ensure it's not too wide */
+      margin-top: 80px; /* Space to accommodate the top section */
+      align-items: center;
+    }
+
+    /* Welcome Text Styling */
+    .welcome-text {
+      font-size: 120px;
+      color: transparent;
+      background: linear-gradient(45deg, darkslategray, lightseagreen, white); /* Gradient text color with white */
+      background-clip: text;
+      -webkit-background-clip: text;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-right: 50px; /* Adds space between text and button */
+      white-space: nowrap;
+    }
+
+    /* Split the text into two lines */
+    .welcome-text span {
+      display: block;
+      /* Makes "to Secure Play" appear on a new line */
+    }
+
+    /* Logo Styling */
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 150px; /* Space between logo and button */
+    }
+
+    .logo-container img {
+      height: 250px; /* Adjust logo height */
+    }
+
+    /* Try Secure Play Button Styling */
+    .try-secure-btn {
+      padding: 20px 40px;
+      font-size: 24px; /* Larger font size */
+      background: linear-gradient(45deg, darkslategray, lightseagreen);
+      color: white;
+      border: none;
+      border-radius: 12px; /* Larger border-radius */
+      cursor: pointer;
+      transition: 0.3s;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .try-secure-btn:hover {
+      background: linear-gradient(45deg, black, darkslategray);
+      transform: scale(1.05);
+    }
+
+    .try-secure-btn:focus {
+      outline: none;
+    }
+
+    /* Secure Your Content Animation */
+    .content-animation {
+      margin-top: 40px;
+      font-size: 30px;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(45deg, darkslategray, lightseagreen);
+      -webkit-background-clip: text;
+      background-clip: text;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Right Buttons -->
+  <div class="top-buttons">
+    <button onclick="window.location.href='/login'">Login</button>
+    <button onclick="window.location.href='/signup'">Signup</button>
+  </div>
+
+  <!-- Content Section -->
+  <div class="content">
+    <!-- Welcome Text -->
+    <div class="welcome-text">
+      <span>Welcome to</span>
+      Secure Play
+    </div>
+
+    <!-- Buttons Section -->
+    <div>
+      <!-- Logo -->
+      <div class="logo-container">
+        <img src="{{ url_for('static', filename='secure-3.png') }}" alt="Secure Play Logo">
+      </div>
+
+      <!-- Try Secure Play Button -->
+      <button class="try-secure-btn" onclick="window.location.href='/upload'">Try Secure Play</button>
+
+      <!-- Secure Your Content Animation -->
+      <div class="content-animation">
+        Secure Your Content with Ease
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

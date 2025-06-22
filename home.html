@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='secure-3.ico') }}">
+    <title> Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, darkslategray, black, lightseagreen);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            font-family: fantasy;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            background: linear-gradient(45deg, lightseagreen, darkslategray);
+            color: white;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+            height: 80vh;
+        }
+
+        .hero .content {
+            max-width: 50%;
+        }
+
+        .hero .content h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero .content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .hero .content .buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero .content .buttons a {
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .hero .content .buttons .upload {
+            background: lightseagreen;
+            color: black;
+        }
+
+        .hero .content .buttons .upload:hover {
+            background: darkslategray;
+            color: white;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .features {
+            padding: 50px;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .features .cards {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .features .card {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .features .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .features .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: lightseagreen;
+        }
+
+        .features .card p {
+            font-size: 1rem;
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        h1 {
+            font-family: fantasy;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="{{ url_for('home') }}" class="logo">
+            <img src="{{ url_for('static', filename='secure-3.png') }}" alt="Logo">
+            Secure Play
+        </a>
+        <div class="nav-links">
+            <a href="{{ url_for('upload') }}">Upload</a>
+            <a href="{{url_for ('my_account')}}">My Account</a>
+            <a href="{{ url_for('login') }}">Login</a>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="content">
+            <h1>Welcome to Secure Play</h1>
+            <p>Your ultimate platform to securely upload, encrypt, and share videos. Protect your content with ease and precision.</p>
+            <div class="buttons">
+                <a href="{{ url_for('upload') }}" class="upload">Upload</a>
+            </div>
+        </div>
+        <div class="video-container">
+            <video autoplay muted loop>
+                <source src="{{ url_for('static', filename='TAANAM-1.mp4') }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <div class="features">
+        <h2>Why Choose Secure Play?</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Secure Encryption</h3>
+                <p>Advanced encryption algorithms to ensure your videos are safe and private.</p>
+            </div>
+            <div class="card">
+                <h3>Easy to Use</h3>
+                <p>A user-friendly interface that makes uploading and managing videos simple.</p>
+            </div>
+            <div class="card">
+                <h3>Fast Processing</h3>
+                <p>Quick uploads and downloads so you can focus on creating great content.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 Secure Play. All Rights Reserved.
+    </div>
+</body>
+</html>

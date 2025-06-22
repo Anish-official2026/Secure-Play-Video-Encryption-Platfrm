@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='secure-3.ico') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <style>
+        /* Gradient background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, darkslategray, black, lightseagreen);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            font-family: fantasy;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            background: lightseagreen;
+            color: white;
+        }
+
+        /* Main Content */
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: fantasy;
+        }
+
+        .success-icon {
+            font-size: 100px;
+            color: lightseagreen;
+            margin-bottom: 30px;
+        }
+
+        .button-group {
+            margin-top: 30px;
+        }
+
+        .button-group button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button-group button.decrypt {
+            background-color: lightseagreen;
+            color: white;
+        }
+
+        .button-group button.decrypt:hover {
+            background-color: darkslategray;
+        }
+
+        .button-group button.upload {
+            background-color: darkslategray;
+            color: white;
+        }
+
+        .button-group button.upload:hover {
+            background-color: lightseagreen;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="/" class="logo">
+            <img src="{{ url_for('static', filename='secure-3.png') }}" alt="Logo">
+            Secure Play
+        </a>
+        <div class="nav-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Encryption Successful!</h1>
+        <div class="success-icon">✔</div>
+        <div class="button-group">
+            <form action="{{ url_for('success') }}" method="POST" style="display:inline;">
+                <button type="submit" class="decrypt">Decrypt File</button>
+            </form>
+            <form action="{{ url_for('upload') }}" method="GET" style="display:inline;">
+                <button type="submit" class="upload">Upload Another Video</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© 2025 Secure Play | All Rights Reserved</p>
+    </div>
+</body>
+</html>

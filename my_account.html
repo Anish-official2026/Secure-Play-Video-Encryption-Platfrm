@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='secure-3.ico') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account</title>
+    <style>
+        /* Gradient background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, darkslategray, black, lightseagreen);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            font-family: fantasy;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            background: lightseagreen;
+            color: white;
+        }
+
+        /* Main Content */
+        .container {
+            padding: 50px;
+        }
+
+        .container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            font-family: fantasy;
+        }
+
+        /* User Details */
+        .user-details {
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-details p {
+            margin: 10px 0;
+        }
+
+        /* Video Card */
+        .video-card {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .video-card h3 {
+            font-size: 1.5rem;
+            color: lightseagreen;
+        }
+
+        .video-card video {
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-card .actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .video-card .actions a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: lightseagreen;
+            color: white;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .video-card .actions a:hover {
+            background-color: darkslategray;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 0.9rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/" class="logo">
+            <img src="{{ url_for('static', filename='secure-3.png') }}" alt="Logo">
+            Secure Play 
+        </a>
+        <div class="nav-links">
+
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Welcome, {{ username }}!</h1>
+        <p>You have uploaded {{ video_count }} video(s).</p>
+
+        <h2>Your Uploaded Videos</h2>
+        <div class="video-list">
+            {% for video in videos %}
+            <div class="video-card">
+                <div class="video-preview">
+                    <h3>{{ video[1] }}</h3> <!-- Display video filename -->
+                    <video width="300" controls>
+                        <source src="{{ url_for('upload_file', filename=video[1]) }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    
+                </div>
+                <div class="actions">
+                    <a href="{{ url_for('download_encrypted', filename='encrypted_' + video[1]) }}">Download Encrypted</a>
+                    <form action="{{ url_for('decrypt') }}" method="POST" style="display:inline;">
+                        <input type="hidden" name="video_id" value="{{ video[0] }}">
+                        <button type="submit">Decrypt</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2025 Secure Play | All Rights Reserved</p>
+    </div>
+</body>
+</html>

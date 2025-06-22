@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decrypt File</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, darkslategray, black, lightseagreen);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            font-family: fantasy;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            background: lightseagreen;
+            color: white;
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        /* Decrypt Container */
+        .decrypt-container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .decrypt-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: lightseagreen;
+            font-family: fantasy;
+        }
+
+        .decrypt-container label {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .decrypt-container input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: black;
+        }
+
+        .decrypt-btn {
+            text-decoration: none;
+            background: linear-gradient(45deg, darkslategray, black, lightseagreen);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .decrypt-btn:hover {
+            background: lightseagreen;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="/" class="logo">
+            <img src="{{ url_for('static', filename='secure-3.png') }}" alt="Logo">
+            Secure Play
+        </a>
+        <div class="nav-links">
+            <a href="/my_account">My Account</a>
+            <a href="/login">Login</a>
+            <a href="/home">Home</a>
+        </div>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <!-- Decrypt Container -->
+        <div class="decrypt-container">
+            <h2>Decrypt Your Video</h2>
+
+            <form method="POST">
+                <label for="decryption_key">Enter your decryption key:</label>
+                <input type="text" name="decryption_key" placeholder="Decryption Key" required>
+
+                <button type="submit" class="decrypt-btn">Decrypt Video</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
